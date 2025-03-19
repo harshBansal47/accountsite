@@ -1,17 +1,17 @@
-"use client"
-import { motion } from 'framer-motion';
-import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
-import Background_Services from '@/public/slide-5.png';
-import AccountingImage from '@/public/Accounting.png';
-import Audit from '@/public/Audit.png';
-import DSC from '@/public/DSC.png';
-import EWAY from '@/public/EWAY.png';
-import GST from '@/public/GST.jpg';
-import IEC from '@/public/IEC.png';
-import Ip from '@/public/iP.png';
-import ITR from '@/public/ITR.jpg';
-import Registration from '@/public/Registration.png';
-import { ChevronDown } from 'lucide-react';
+"use client";
+import { motion } from "framer-motion";
+import { Typography } from "@mui/material";
+import Background_Services from "@/public/slide-5.png";
+import AccountingImage from "@/public/Accounting.png";
+import Audit from "@/public/Audit.png";
+import DSC from "@/public/DSC.png";
+import EWAY from "@/public/EWAY.png";
+import GST from "@/public/GST.jpg";
+import IEC from "@/public/IEC.png";
+import Ip from "@/public/iP.png";
+import ITR from "@/public/ITR.jpg";
+import Registration from "@/public/Registration.png";
+import { ChevronDown } from "lucide-react";
 
 const serviceData = [
   {
@@ -134,134 +134,116 @@ const serviceData = [
   },
 ];
 
+
 export default function Services() {
   return (
     <section
       id="services"
-      className="w-full h-auto bg-fixed flex flex-col py-4 relative  overflow-hidden"
+      className="w-full min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white py-16 relative overflow-hidden"
       style={{
         backgroundImage: `url(${Background_Services.src})`,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        position: 'relative',
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
       }}
     >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black opacity-60 z-0" />
 
-<div style={{
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  backgroundColor: 'rgba(0, 0, 0, 0.5)', // Adjust the rgba values as needed
-}} />
-      {/* Sticky Header */}
-      <div className="absolute top-0 z-20 bg-neutral-50 py-6 w-full shadow-md">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">
-            Services We Offer
-          </h1>
-          <div className="w-40 h-1 bg-teal-500 rounded-full mx-auto mb-4"></div>
-          <p className="text-md text-gray-600">
-            Explore our range of services tailored to meet your needs.
-          </p>
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 text-center mb-16"
+      >
+        <Typography variant="h1" className="text-5xl md:text-6xl font-extrabold tracking-tight">
+          Our Premium Services
+        </Typography>
+        <div className="w-24 h-1 bg-teal-400 rounded-full mx-auto mt-4" />
+        <Typography variant="body1" className="mt-4 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+          Discover tailored solutions designed to empower your business with efficiency and precision.
+        </Typography>
+      </motion.div>
+
+      {/* Services Grid */}
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {serviceData.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              className="group bg-white/10 backdrop-blur-lg rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-700/50 hover:border-teal-400"
+            >
+              {/* Image */}
+              <div className="relative overflow-hidden rounded-lg mb-6">
+                <motion.img
+                  src={service.imgSrc}
+                  alt={service.title}
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                  whileHover={{ scale: 1.1 }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              </div>
+
+              {/* Title */}
+              <Typography variant="h5" className="text-2xl font-semibold text-teal-300 mb-4">
+                {service.title}
+              </Typography>
+
+              {/* Items */}
+              <ul className="space-y-3 text-gray-300 text-sm">
+                {service.items.slice(0, 4).map((item, itemIndex) => (
+                  <li key={itemIndex} className="flex items-start">
+                    <span className="mr-2 text-teal-400">•</span>
+                    {item}
+                  </li>
+                ))}
+                {service.items.length > 4 && (
+                  <li className="text-teal-400 cursor-pointer hover:underline">
+                    + {service.items.length - 4} more services
+                  </li>
+                )}
+              </ul>
+
+              {/* Misc Info (if available) */}
+              {service.misc && (
+                <Typography variant="body2" className="mt-4 text-gray-400 italic">
+                  {/* {service.misc} */}
+                </Typography>
+              )}
+
+              {/* Expand Button */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-6 flex items-center text-teal-400 hover:text-teal-300 transition-colors"
+              >
+                {/* Learn More <ChevronDown className="ml-2 w-5 h-5" /> */}
+              </motion.button>
+            </motion.div>
+          ))}
         </div>
       </div>
 
-      {/* Main Content Section */}
-      <div className="container mx-auto mt-36 overflow-hidden" style={{maxWidth:"80%"}}>
-        {serviceData.map((service, index) => (
-          <Accordion
-            key={index}
-            className={`my-6  bg-gray-300`}
-            TransitionProps={{ unmountOnExit: true }}
-            sx={{
-              boxShadow: 1,
-              borderRadius: 1,
-              '&:before': {
-                display: 'none',
-              },
-              '& .MuiAccordionSummary-root': {
-                padding: 2,
-                borderBottom: '1px solid rgba(0, 0, 0, 0.125)',
-              },
-              '& .MuiAccordionSummary-content': {
-                margin: 0,
-              },
-              '& .MuiAccordionDetails-root': {
-                padding: 2,
-              },
-            }}
-          >
-            <AccordionSummary
-              expandIcon={<ChevronDown/>} // Modern icon
-              aria-controls={`panel${index}-content`}
-              id={`panel${index}-header`}
-            >
-              <Typography className="text-xl font-semibold text-gray-800">
-                {service.title}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <div className="flex flex-col md:flex-row items-center">
-                {service.imageLeft && (
-                  <motion.div
-                    className="flex-1 my-4"
-                    initial={{ opacity: 0, x: -150 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                  >
-                    <img
-                      src={service.imgSrc}
-                      alt={service.title}
-                      className="mx-auto mb-4 w-80 h-80 object-cover rounded-md shadow-sm"
-                    />
-                  </motion.div>
-                )}
-                <motion.div
-                  className="flex-1 my-4 p-6"
-                  initial={service.imageLeft ? { opacity: 0, x: 150 } : { opacity: 0, x: -150 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  <div
-                    className={`flex-1 ${service.imageLeft ? 'md:ml-10' : 'md:mr-10'} text-left`}
-                  >
-                    <h2 className="text-lg font-bold mb-4 text-gray-700">
-                      {service.title}
-                    </h2>
-                    <ul className="list-disc list-inside space-y-2 text-gray-600 text-base">
-                      {service.items.map((item, itemIndex) => (
-                        <li key={itemIndex} className="leading-relaxed">
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-                {!service.imageLeft && (
-                  <motion.div
-                    className="flex-1 my-4"
-                    initial={{ opacity: 0, x: 150 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                  >
-                    <img
-                      src={service.imgSrc}
-                      alt={service.title}
-                      className="mx-auto mb-4 w-80 h-80 object-cover rounded-md shadow-sm"
-                    />
-                  </motion.div>
-                )}
-              </div>
-              {service.misc && (
-                <div className="my-4 mx-5 text-gray-600 text-base">{'=> '} {service.misc}</div>
-              )}
-            </AccordionDetails>
-          </Accordion>
-        ))}
-      </div>
+      {/* Call to Action */}
+      {/* <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="relative z-10 text-center mt-16"
+      >
+        <Typography variant="h4" className="text-3xl font-bold">
+          Ready to Elevate Your Business?
+        </Typography>
+        <button className="mt-6 px-8 py-3 bg-teal-500 text-white rounded-full font-semibold hover:bg-teal-600 transition-colors">
+          Get Started Now
+        </button>
+      </motion.div> */}
     </section>
   );
 }

@@ -27,7 +27,7 @@ export default function Navbar() {
                     {/* Center Logo */}
                     <div className="h-48 w-48 mx-4 rounded-full flex md:justify-center items-center">
                         <a href="/" className="w-full h-full">
-                            <img src="/logo.png" alt="gst suvidha kendra" className="h-full object-contain" />
+                            <img src="/image.png" alt="gst suvidha kendra" className="h-full object-contain" />
                         </a>
                     </div>
 

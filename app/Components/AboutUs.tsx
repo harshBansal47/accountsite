@@ -1,6 +1,6 @@
 // src/AboutUs.js
 
-import AboutImage from '@/public/about.jpeg';
+import AboutImage from '@/public/about2.jpeg';
 const AboutUs = () => {
   return (
     <section  id = "about" className="bg-gray-100 py-12 lg:py-24">
@@ -10,16 +10,15 @@ const AboutUs = () => {
           <div className="lg:w-1/2 lg:pr-12">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">About Us</h2>
             <p className="text-gray-700 mb-4">
-              Welcome to [Your Company Name], where we are dedicated to delivering high-quality products and exceptional customer service. Our team of experts is passionate about what they do, and we strive to exceed expectations with every project we undertake. 
+              Welcome to Shanti Accounting & Taxation, where we are dedicated to delivering high-quality products and exceptional customer service. Our team of experts is passionate about what they do, and we strive to exceed expectations with every project we undertake. 
             </p>
             <p className="text-gray-700 mb-4">
               With years of experience in the industry, we have built a reputation for reliability and innovation. Whether youre looking for [specific products/services], we are here to help you achieve your goals.
             </p>
             <div className="mt-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Contact Details</h3>
-              <p className="text-gray-700 mb-1"><strong>Phone:</strong> (123) 456-7890</p>
-              <p className="text-gray-700 mb-1"><strong>Email:</strong> info@yourcompany.com</p>
-              <p className="text-gray-700 mb-1"><strong>Address:</strong> 1234 Main Street, Anytown, ST 12345</p>
+              <p className="text-gray-700 mb-1"><strong>Email:</strong> shantiaccounting&taxation@gmail.com</p>
+              <p className="text-gray-700 mb-1"><strong>Address:</strong> 100 Feet Road, Near Adarsh Vidya Mandir</p>
             </div>
           </div>
           {/* Image Section */}

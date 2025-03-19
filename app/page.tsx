@@ -19,7 +19,7 @@ export default function Home() {
       <Misclenious/>
       <GoogleMap/>
       <ScrollButton/>
-      <CallingButton call="8955330433" whatsapp="8955330433"/>
+      <CallingButton call="9928409493" whatsapp="9928409493"/>
    </div>
   );
 }
